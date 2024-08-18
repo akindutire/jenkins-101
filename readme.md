@@ -67,3 +67,6 @@ docker inspect <container_id> | grep IPAddress
 ```
 docker pull devopsjourney1/myjenkinsagents:python
 ```
+
+## You may use default
+Agent docker image: jenkins/agent:alpine-jdk17
