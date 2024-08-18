@@ -70,3 +70,4 @@ docker pull devopsjourney1/myjenkinsagents:python
 
 ## You may use default
 Agent docker image: jenkins/agent:alpine-jdk17
+cwdigitals/jenkins-agent-deployer:latest
