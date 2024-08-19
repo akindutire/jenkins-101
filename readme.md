@@ -69,5 +69,8 @@ docker pull devopsjourney1/myjenkinsagents:python
 ```
 
 ## You may use default
-Agent docker image: jenkins/agent:alpine-jdk17
+Agent docker image: jenkins/agent:alpine-jdk17 or
 cwdigitals/jenkins-agent-deployer:latest
+
+## Necessary plugin for builds
+- Environment Injector
