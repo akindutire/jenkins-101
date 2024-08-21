@@ -68,9 +68,10 @@ docker inspect <container_id> | grep IPAddress
 docker pull devopsjourney1/myjenkinsagents:python
 ```
 
-## You may use default
+## You may use custom
 Agent docker image: jenkins/agent:alpine-jdk17 or
 cwdigitalservices/jenkins-agent-deployer:latest
+Don't forget to add *type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock* in Mount section of the container settings when adding the docker agent template
 
 ## Necessary plugin for builds
 - Environment Injector
