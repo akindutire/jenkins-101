@@ -75,6 +75,11 @@ docker pull devopsjourney1/myjenkinsagents:python
 - Don't forget to add *type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock* in Mount section of the container settings when adding the docker agent template
 - Install Bitbucket plugin
 - Setup webhook jenkins-url:port/bitbucket-hook/
+- Add push, PR merge to webhook event
+- In your jenkins UI pipeline job, enable the poll SCM (with no interval defined i.e empty interval)
+- Enable bitbucket push
+- Within your pipeline script options, make sure to skipDefaultCheckout(true)
+- Create a custom checkout stage using git tool and a predefined credential (username and password)
 
 ## Necessary plugin for builds
 - Environment Injector
