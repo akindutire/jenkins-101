@@ -69,9 +69,12 @@ docker pull devopsjourney1/myjenkinsagents:python
 ```
 
 ## You may use custom
-Agent docker image: jenkins/agent:alpine-jdk17 or
-cwdigitalservices/jenkins-agent-deployer:latest
-Don't forget to add *type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock* in Mount section of the container settings when adding the docker agent template
+*Agent docker image:* 
+- jenkins/agent:alpine-jdk17 or
+- cwdigitalservices/jenkins-agent-deployer:latest
+- Don't forget to add *type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock* in Mount section of the container settings when adding the docker agent template
+- Install Bitbucket plugin
+- Setup webhook jenkins-url:port/bitbucket-hook
 
 ## Necessary plugin for builds
 - Environment Injector
