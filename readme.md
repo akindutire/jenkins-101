@@ -74,7 +74,7 @@ docker pull devopsjourney1/myjenkinsagents:python
 - cwdigitalservices/jenkins-agent-deployer:latest
 - Don't forget to add *type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock* in Mount section of the container settings when adding the docker agent template
 - Install Bitbucket plugin
-- Setup webhook jenkins-url:port/bitbucket-hook
+- Setup webhook jenkins-url:port/bitbucket-hook/
 
 ## Necessary plugin for builds
 - Environment Injector
