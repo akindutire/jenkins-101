@@ -81,6 +81,7 @@ docker pull devopsjourney1/myjenkinsagents:python
 - Within your pipeline script options, make sure to skipDefaultCheckout(true)
 - Create a custom checkout stage using git tool and a predefined credential (username and password)
 - Ref: https://community.atlassian.com/t5/Agile-questions/Bitbucket-webhook-is-not-triggering-the-build-in-jenkins/qaq-p/729199
+- Clean up your jenkins regularly using *docker system prune --all --volumes --force*
 
 ## Necessary plugin for builds
 - Environment Injector
