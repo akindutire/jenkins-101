@@ -87,6 +87,7 @@ docker pull devopsjourney1/myjenkinsagents:python
 - Environment Injector
 
 ## Clean up
+```
 mkdir -p /var/log/jenkins/
 Add the below
 
@@ -124,7 +125,7 @@ log_message "Current disk usage:"
 df -h >> $LOG_FILE
 
 exit 0
-
+```
 
 - crontab -e
 - 0 2 * * * docker system prune -af --volumes && ./cleanup.sh >> /dev/null 2>&1 //2am everyday
