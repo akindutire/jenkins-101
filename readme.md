@@ -85,3 +85,46 @@ docker pull devopsjourney1/myjenkinsagents:python
 
 ## Necessary plugin for builds
 - Environment Injector
+
+## Clean up
+mkdir -p /var/log/jenkins/
+Add the below
+'''
+#!/bin/bash
+
+# Log file
+LOG_FILE="/var/log/jenkins/docker_cleanup.log"
+
+# Ensure log directory exists
+mkdir -p $(dirname $LOG_FILE)
+
+# Function to log messages
+log_message() {
+    echo "$(date): $1" >> $LOG_FILE
+}
+
+log_message "Starting Docker overlay cleanup"
+
+# Find and remove unused overlays
+for overlay in $(sudo find /var/lib/docker/overlay2 -mindepth 1 -maxdepth 1 -type d); do
+    if ! docker ps -qa --filter volume=$overlay | grep -q .; then
+        log_message "Removing unused overlay: $overlay"
+        sudo rm -rf $overlay
+    fi
+done
+
+# Run a system prune to clean up other unused resources
+log_message "Running Docker system prune"
+docker system prune -af --volumes >> $LOG_FILE 2>&1
+
+log_message "Docker overlay cleanup completed"
+
+# Output disk usage after cleanup
+log_message "Current disk usage:"
+df -h >> $LOG_FILE
+
+exit 0
+'''
+
+- crontab -e
+- 0 2 * * * docker system prune -af --volumes && ./cleanup.sh >> /dev/null 2>&1 //2am everyday
