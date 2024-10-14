@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=6YZvp2GwT0A
 # Installation
 ## Build the Jenkins BlueOcean Docker Image (or pull and use the one I built)
 ```
-FROM jenkins/jenkins:2.480-jdk17
+FROM jenkins/jenkins:2.474-jdk17
 USER root
 RUN apt-get install -y ca-certificates
 RUN apt-get update && apt-get install -y lsb-release python3-pip
@@ -22,7 +22,7 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28 docker-p
 
 - Save it
 
-docker build -t myjenkins-blueocean:2.480 .
+docker build -t myjenkins-blueocean:2.474 .
 
 #IF you are having problems building the image yourself, you can pull from my registry (It is version 2.332.3-1 though, the original from the video)
 
