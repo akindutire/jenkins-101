@@ -68,6 +68,47 @@ docker inspect <container_id> | grep IPAddress
 docker pull devopsjourney1/myjenkinsagents:python
 ```
 
+## Using a custom docker image
+```
+FROM jenkins/agent:latest-alpine-jdk17
+USER root
+RUN apk add \
+    python3 \
+    py3-pip \
+    openssh \
+    ansible \
+    ca-certificates \
+    curl \
+    gnupg \
+    libseccomp-dev \
+    libtool \
+    make \
+    ncurses-dev \
+    linux-headers
+RUN wget -q https://download.docker.com/linux/static/stable/x86_64/docker-20.10.7.tgz && \
+    tar -xzvf docker-20.10.7.tgz --strip-components=1 -C /usr/local/bin/ 
+
+RUN rm docker-20.10.7.tgz
+
+RUN apk add docker
+# Check if the 'docker' group exists, and add the user to it if it does
+RUN if grep -q -E '^docker:' /etc/group; then \
+        adduser $USER docker; \
+    else \
+        addgroup -S docker && adduser $USER docker; \
+    fi
+
+RUN ln -sf python3 /usr/bin/python
+
+#ENTRYPOINT ["/usr/local/bin/jenkins-agent"]
+CMD ["/bin/sh"]
+```
+
+## Using CW deployer built via the custom image above
+```
+docker pull cwdigitalservices/jenkins-agent-deployer:latest
+```
+
 ## You may use custom
 *Agent docker image:* 
 - jenkins/agent:alpine-jdk17 or
