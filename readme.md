@@ -151,6 +151,7 @@ docker pull cwdigitalservices/jenkins-agent-deployer:latest
 ## Necessary plugin for builds
 - Environment Injector
 - Bitbucket plugin
+- Workspace Cleanup Plugin
 
 ## Clean up
 ```
