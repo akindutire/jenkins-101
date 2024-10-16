@@ -134,7 +134,10 @@ docker pull cwdigitalservices/jenkins-agent-deployer:latest
 *Agent docker image:* 
 - jenkins/agent:alpine-jdk17 or
 - cwdigitalservices/jenkins-agent-deployer:latest
+- Agent name eg "cw_digi_docker_default_agent" should be the same as the label
 - Don't forget to add *type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock* in Mount section of the container settings when adding the docker agent template
+- Set remote system root to /home/jenkins within the agent template
+- Instance should be 2
 - Install Bitbucket plugin
 - Setup webhook jenkins-url:port/bitbucket-hook/
 - Add push, PR merge to webhook event
@@ -147,6 +150,7 @@ docker pull cwdigitalservices/jenkins-agent-deployer:latest
 
 ## Necessary plugin for builds
 - Environment Injector
+- Bitbucket plugin
 
 ## Clean up
 ```
